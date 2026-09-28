@@ -1,0 +1,60 @@
+<div class="about-container">
+  <article class="about-content">
+    <header class="profile-header">
+      <div class="avatar-box">
+        <span class="avatar-initials">GA</span>
+        <div class="status-indicator" title="Disponible para roles técnicos"></div>
+      </div>
+      <div class="header-details">
+        <span class="role-badge">{{ profile.role }}</span>
+        <h1 class="profile-name">{{ profile.name }}</h1>
+        <p class="profile-location">Medellín, Colombia · Ecosistema RIWI</p>
+      </div>
+    </header>
+
+    <section class="doc-block">
+      <p class="lead-text">{{ profile.summary }}</p>
+      <div class="stats-row">
+        @for (item of profile.highlights; track item.label) {
+          <app-stat-card [label]="item.label" [value]="item.value"></app-stat-card>
+        }
+      </div>
+    </section>
+
+    <section class="doc-block">
+      <h2 class="section-title">Filosofía de Ingeniería</h2>
+      <p class="body-text">{{ profile.philosophy }}</p>
+    </section>
+
+    <section class="doc-block">
+      <h2 class="section-title">Áreas de Enfoque & Especialidad</h2>
+      <ul class="interest-list">
+        @for (interest of profile.interests; track interest) {
+          <li class="interest-item">
+            <span class="bullet-dot"></span>
+            <span>{{ interest }}</span>
+          </li>
+        }
+      </ul>
+    </section>
+
+    <section class="doc-block">
+      <div class="section-header-flex">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <a routerLink="/projects" class="view-all-link">
+          <span>Explorar todos los proyectos</span>
+          <app-icon name="chevron-right" [size]="14"></app-icon>
+        </a>
+      </div>
+      <div class="projects-preview-grid">
+        @for (proj of featuredProjects; track proj.id) {
+          <a [routerLink]="['/projects', proj.slug]" class="preview-card">
+            <span class="preview-cat">{{ proj.category === 'data-engineering' ? 'Data Pipeline' : 'Cloud / IaC' }}</span>
+            <h3 class="preview-title">{{ proj.title }}</h3>
+            <p class="preview-desc">{{ proj.tagline }}</p>
+          </a>
+        }
+      </div>
+    </section>
+  </article>
+</div>

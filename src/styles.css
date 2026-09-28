@@ -1,1 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
+/* ========================================================
+   geislera.com - Two Dedicated & Seamless Color Palettes (<80 lines)
+   ======================================================== */
+:root, body.dark-theme, :root[data-theme='dark'] {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Consolas, monospace;
+  --header-height: 64px;
+  --sidebar-width: 270px;
+
+  /* PALETA 1: DEEP SPACE TECH (Modo Oscuro) */
+  --bg-canvas: #090d16;
+  --bg-sidebar: #0b1120;
+  --bg-card: #0f172a;
+  --bg-card-hover: #1e293b;
+  --bg-input: #0b1120;
+  --border-color: rgba(30, 41, 59, 0.65);
+  --border-subtle-glow: rgba(56, 189, 248, 0.15);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-primary: #06b6d4;
+  --accent-glow: rgba(6, 182, 212, 0.15);
+  --accent-success: #10b981;
+  --code-bg: #030712;
+  --code-header: #0b101d;
+  --code-text: #38bdf8;
+  --btn-cta-text: #030712;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --sidebar-gradient: linear-gradient(180deg, rgba(15, 23, 42, 0.5) 0%, rgba(9, 13, 22, 0.2) 100%);
+}
+
+/* PALETA 2: NORDIC TECH SLATE (Modo Día Suave & Armónico) */
+body.light-theme, :root[data-theme='light'] {
+  --bg-canvas: #f8fafc;
+  --bg-sidebar: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-input: #ffffff;
+  --border-color: rgba(203, 213, 225, 0.6);
+  --border-subtle-glow: rgba(2, 132, 199, 0.1);
+  --text-primary: #090d16;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --accent-primary: #0284c7;
+  --accent-glow: rgba(2, 132, 199, 0.12);
+  --accent-success: #059669;
+  --code-bg: #0f172a;
+  --code-header: #1e293b;
+  --code-text: #38bdf8;
+  --btn-cta-text: #ffffff;
+  --shadow-sm: 0 1px 4px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.06);
+  --sidebar-gradient: linear-gradient(180deg, rgba(241, 245, 249, 0.6) 0%, rgba(248, 250, 252, 0.2) 100%);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* Custom scrollbars */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }

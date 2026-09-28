@@ -1,0 +1,92 @@
+<div class="projects-layout">
+  <div class="projects-bounded-container">
+    <app-sidebar
+      class="projects-sidebar"
+      [class.collapsed]="isSidebarCollapsed()"
+      [isCollapsed]="isSidebarCollapsed()"
+      (toggleCollapse)="toggleSidebar()">
+    </app-sidebar>
+
+    <div class="projects-center" #scrollContainer (scroll)="onScroll()">
+      <div class="projects-content-box">
+        <div class="top-nav-bar">
+          @if (project(); as p) {
+            <nav class="breadcrumb">
+              <span>Proyectos</span><span>/</span>
+              <span>{{ p.category === 'data-engineering' ? 'Data Engineering' : 'Cloud & DevOps' }}</span><span>/</span>
+              <span class="curr">{{ p.title }}</span>
+            </nav>
+          }
+        </div>
+        @if (project(); as p) {
+          <article class="project-article">
+            <header id="inicio" class="doc-hero">
+              <div class="hero-left">
+                <span class="cat-pill">{{ p.category === 'data-engineering' ? 'Data Engineering' : 'Cloud & DevOps' }}</span>
+                <h1 class="project-title">{{ p.title }}</h1>
+                <p class="project-tagline">{{ p.tagline }}</p>
+                <div class="tech-pills">
+                  @for (t of p.stack; track t) { <app-badge [text]="t"></app-badge> }
+                </div>
+              </div>
+              <div class="hero-right">
+                <a [href]="p.githubUrl" target="_blank" rel="noopener" class="hero-github-btn">
+                  <app-icon name="github" [size]="18"></app-icon>
+                  <span>Ver en GitHub</span>
+                  <app-icon name="external" [size]="14"></app-icon>
+                </a>
+              </div>
+            </header>
+
+            @for (sec of p.sections; track sec.id) {
+              <section [id]="sec.id" class="doc-section">
+                <h2 class="subhead">{{ sec.title }}</h2>
+                @if (sec.body) { <p class="body-p">{{ sec.body }}</p> }
+                @if (sec.metrics) {
+                  <div class="metrics-grid">
+                    @for (m of sec.metrics; track m.label) {
+                      <app-stat-card [label]="m.label" [value]="m.value"></app-stat-card>
+                    }
+                  </div>
+                }
+                @if (sec.steps) {
+                  <div class="flow-grid">
+                    @for (step of sec.steps; track step.name; let idx = $index) {
+                      <div class="flow-card">
+                        <div class="node-meta"><span class="idx">0{{ idx + 1 }}</span><span class="node-name">{{ step.name }}</span></div>
+                        <span class="node-tech">{{ step.tech }}</span>
+                        <p class="node-desc">{{ step.description }}</p>
+                      </div>
+                    }
+                  </div>
+                }
+                @if (sec.code) {
+                  <app-code-preview [filename]="sec.code.filename" [code]="sec.code.code" [language]="sec.code.language"></app-code-preview>
+                }
+              </section>
+            }
+
+            <footer id="repositorio" class="doc-footer">
+              <a [href]="p.githubUrl" target="_blank" rel="noopener" class="footer-github-btn">
+                <app-icon name="github" [size]="18"></app-icon>
+                <span>Ver repositorio completo en GitHub</span>
+                <app-icon name="external" [size]="14"></app-icon>
+              </a>
+            </footer>
+          </article>
+        }
+      </div>
+    </div>
+    <aside class="projects-toc">
+      <span class="toc-header">EN ESTA PÁGINA</span>
+      <nav class="toc-nav">
+        @for (item of tocItems(); track item.id) {
+          <button type="button" class="toc-btn" [class.active]="activeSection() === item.id" (click)="scrollToSection(item.id)">
+            <span class="toc-line"></span>
+            <span class="toc-text">{{ item.label }}</span>
+          </button>
+        }
+      </nav>
+    </aside>
+  </div>
+</div>

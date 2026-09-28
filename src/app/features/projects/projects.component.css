@@ -1,0 +1,48 @@
+.projects-layout { height: calc(100vh - var(--header-height)); overflow: hidden; display: flex; justify-content: center; background: var(--bg-canvas); }
+.projects-bounded-container { width: 100%; max-width: 1380px; height: 100%; display: flex; position: relative; }
+.projects-sidebar { width: 260px; height: 100%; flex-shrink: 0; transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+.projects-sidebar.collapsed { width: 52px; }
+.projects-center { flex: 1; height: 100%; overflow-y: auto; display: flex; justify-content: center; scroll-behavior: smooth; }
+.projects-content-box { width: 100%; max-width: 820px; padding: 2rem 2.5rem 5rem; display: flex; flex-direction: column; gap: 2rem; }
+.top-nav-bar { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.breadcrumb { display: flex; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); }
+.curr { color: var(--text-primary); font-weight: 600; }
+.project-article { display: flex; flex-direction: column; gap: 2rem; }
+.doc-hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
+.hero-left { flex: 1; display: flex; flex-direction: column; gap: 0.4rem; min-width: 270px; }
+.cat-pill { font-size: 0.72rem; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 0.06em; }
+.project-title { font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1.15; }
+.project-tagline { font-size: 1.05rem; color: var(--text-secondary); margin: 0.2rem 0 0.8rem; }
+.tech-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.hero-github-btn, .footer-github-btn {
+  display: inline-flex; align-items: center; gap: 0.6rem; background: var(--accent-primary);
+  color: var(--btn-cta-text); font-weight: 600; padding: 0.6rem 1.15rem; border-radius: 8px; font-size: 0.88rem;
+  box-shadow: var(--shadow-sm); transition: transform 0.15s, opacity 0.15s;
+}
+.hero-github-btn:hover, .footer-github-btn:hover { transform: translateY(-2px); opacity: 0.95; }
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; }
+.subhead { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; }
+.body-p { font-size: 0.95rem; line-height: 1.65; color: var(--text-secondary); }
+.flow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.85rem; }
+.flow-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.1rem; box-shadow: var(--shadow-sm); }
+.node-meta { display: flex; gap: 0.4rem; align-items: center; }
+.idx { font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent-primary); font-weight: 700; }
+.node-name { font-weight: 600; font-size: 0.9rem; color: var(--text-primary); }
+.node-tech { font-size: 0.75rem; color: var(--accent-success); font-family: var(--font-mono); }
+.node-desc { font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.35rem; line-height: 1.45; }
+.projects-toc {
+  width: 220px; height: 100%; flex-shrink: 0; padding: 2rem 1rem;
+  border-left: 1px solid var(--border-color); background: var(--sidebar-gradient); backdrop-filter: blur(8px); overflow-y: auto;
+}
+.toc-header { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; margin-bottom: 0.75rem; display: block; }
+.toc-nav { display: flex; flex-direction: column; gap: 0.25rem; }
+.toc-btn {
+  display: flex; align-items: center; gap: 0.65rem; padding: 0.45rem 0.6rem; border-radius: 6px;
+  text-align: left; font-size: 0.82rem; color: var(--text-secondary); transition: all 0.15s; width: 100%;
+}
+.toc-line { width: 2px; height: 14px; background: var(--border-color); border-radius: 2px; transition: all 0.15s; flex-shrink: 0; }
+.toc-btn:hover { color: var(--text-primary); background: var(--bg-card); }
+.toc-btn.active { color: var(--accent-primary); font-weight: 600; background: var(--accent-glow); }
+.toc-btn.active .toc-line { background: var(--accent-primary); width: 3px; box-shadow: 0 0 6px var(--accent-primary); }
+@media (max-width: 1100px) { .projects-toc { display: none; } }
+@media (max-width: 850px) { .projects-sidebar { display: none; } .projects-content-box { padding: 1.5rem 1rem; } }
